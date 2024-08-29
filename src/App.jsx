@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import pic from '/flower.jpg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,25 +7,34 @@ import { Pagination, Navigation,  Parallax} from 'swiper/modules';
 
 function App() {
 
+  const [next, setNext] = useState(false)
+
   return (
     <>
-      <div className="min-w-screen min-h-screen flex flex-col justify-center items-center bg-slate-700">
-        <div className="w-[1440px] mx-auto">
+    {/* className="w-screen h-screen flex flex-col justify-center items-center bg-slate-700" */}
+      <div className='py-50  bg-black'>
+        <div className='w-[80%] mx-auto border border-red-500'>
+          <div className='w-full h-[300px] bg-teal-700'></div>
+        </div>
+
+
+        <div className="w-[80%] mx-auto border border-red-500">
           <div className='flex item-center gap-3'>
-             <button className='swiper-button-next py-2 px-4 bg-teal-700 text-white font-medium rounded-lg'>Next</button>
-             <button className='swiper-button-prev py-2 px-4 bg-teal-700 text-white font-medium rounded-lg'>Prev</button>
+             <button onClick={()=>setNext(true)} className='swiper-button-next py-2 px-4 bg-teal-700 text-white font-medium rounded-lg'>Next</button>
+             <button onClick={()=>setNext(false)} className='swiper-button-prev py-2 px-4 bg-teal-700 text-white font-medium rounded-lg'>Prev</button>
           </div>
         </div>
-           <div className='w-full pt-8'>
+        <div className={` ${next ? 'w-[100%] transition-all' : ''} w-[90%] ml-auto border border-red-500`}>
+        <div className='w-full overflow-hidden pt-8'>
            <div className="flex justify-between items-center gap-[30px]">
           <Swiper
         rewind={true}
         slidesPerView={4.2}
         initialSlide={0}
         spaceBetween={30}
-        style={{
-          'paddingLeft': '200px',
-        }}
+        // style={{
+        //   'paddingLeft': '180px',
+        // }}
         loop={true}
         // centeredSlides={false}
         grabCursor={true}
@@ -46,9 +55,17 @@ function App() {
           </Swiper>
         </div>
       </div>
+        </div>
+
+
+      <div className='w-[80%] mx-auto border border-red-500'>
+          <div className='w-full h-[300px] bg-blue-700'></div>
+        </div>
  </div> 
     </>
   )
 }
 
 export default App
+
+
